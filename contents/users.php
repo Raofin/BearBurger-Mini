@@ -1,63 +1,67 @@
 <?php
-    $user = [
-        'username' => '',
-        'email' => '',
-        'password' => '',
-        'cpassword' => '',
-        'phone' => '',
-        'gender' => '',
-    ];
-
-    function register($user)
+    function register()
     {
-        $user = array_merge($user, $_POST);
+        $user = [
+            'username' => '',
+            'email' => '',
+            'password' => '',
+            'cpassword' => '',
+            'phone' => '',
+            'gender' => '',
+            'id' => '',
+        ];
+
         $isValid = true;
-        $invalid = "";
+        $errorMessage = "";
+
+        $user = array_merge($user, $_POST);
 
         if (!$user['username'] || strlen($user['username']) < 4 || strlen($user['username']) > 20) {
             $isValid = false;
-            $invalid = "$invalid Username,";
+            $errorMessage = "$errorMessage Username,";
         }
         if (!$user['email'] || !filter_var($user['email'], FILTER_VALIDATE_EMAIL)) {
             $isValid = false;
-            $invalid = "$invalid Email Address,";
+            $errorMessage = "$errorMessage Email Address,";
         }
         if (!$user['password'] || strlen($user['password']) < 4 || strlen($user['password']) > 20) {
             $isValid = false;
-            $invalid = "$invalid Password,";
+            $errorMessage = "$errorMessage Password,";
         } else if ($user['password'] !== $user['cpassword']) {
             $isValid = false;
-            $invalid = "$invalid Confirm Password,";
+            $errorMessage = "$errorMessage Confirm Password,";
         }
         if (filter_var($user['phone'], FILTER_VALIDATE_INT)) {
             $isValid = false;
-            $invalid = "$invalid Phone Number,";
+            $errorMessage = "$errorMessage Phone Number,";
         }
         if (!$user['gender']) {
             $isValid = false;
-            $invalid = "$invalid Gender,";
+            $errorMessage = "$errorMessage Gender,";
         }
         if (!$isValid) {
-            $invalidMessage = "Invalid" . substr($invalid, 0, -1) . ".";
+            $invalidMessage = "Invalid" . substr($errorMessage, 0, -1) . ".";
             echo "<p style=\"color:tomato;\">$invalidMessage</p>";
         } else createUser($_POST);
     }
 
-    function getUsers()
+    function createUser($data)
+    {
+        $users = readJson();
+        if ($users == null) $data['id'] = 1;
+        else $data['id'] = $users[count($users) - 1]['id'] + 1;
+        unset($data['cpassword']);
+        $users[] = $data;
+        writeJson($users);
+        return $data;
+    }
+
+    function readJson()
     {
         return json_decode(file_get_contents('..\userData.json'), true);
     }
 
-    function putJson($users)
+    function writeJson($users)
     {
         file_put_contents('..\userData.json', json_encode($users, JSON_PRETTY_PRINT));
-    }
-
-    function createUser($data)
-    {
-        $users = getUsers();
-        $data['id'] = rand(1000000, 2000000);
-        $users[] = $data;
-        putJson($users);
-        return $data;
     }

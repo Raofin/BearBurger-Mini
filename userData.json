@@ -2,10 +2,9 @@
     {
         "username": "Raofin",
         "email": "hello@raofin.net",
-        "password": "123456",
-        "cpassword": "123456",
+        "password": "asdfg",
         "phone": "0123456789",
         "gender": "Male",
-        "id": 1486089
+        "id": 1
     }
 ]

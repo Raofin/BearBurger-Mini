@@ -51,7 +51,7 @@
                     </td>
                 </tr>
             </table>
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') register($user) ?>
+            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') register() ?>
             <br>
             <input type="submit" value="Register">
             <br><br><br>
