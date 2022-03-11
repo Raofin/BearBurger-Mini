@@ -20,9 +20,10 @@
 <div style="padding: 20px 20px 5px 20px">
     <img src=../img/logo-3.svg alt="Logo">
     <?php if (isset($_SESSION['username'])) {
-        echo "<h2 style=\"float: right; padding-right: 20px\">
-            {$_SESSION['username']} <a href=\"logout.php\">Logout</a>
-            </h2>";} ?>
+        echo "<h2 style=\"float: right; padding-right: 20px\"><a href='profile.php'>{$_SESSION['username']}</a>
+             <a href=\"logout.php\">Logout</a>
+            </h2>";
+    } ?>
 </div>
 <hr>
 

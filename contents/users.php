@@ -1,4 +1,5 @@
 <?php
+
     function register()
     {
         $user = [
@@ -8,6 +9,7 @@
             'cpassword' => '',
             'phone' => '',
             'gender' => '',
+            'joined' => '',
             'id' => '',
         ];
 
@@ -31,7 +33,7 @@
             $isValid = false;
             $errorMessage = "$errorMessage Confirm Password,";
         }
-        if (filter_var($user['phone'], FILTER_VALIDATE_INT)) {
+        if (!is_numeric($user['phone'])) {
             $isValid = false;
             $errorMessage = "$errorMessage Phone Number,";
         }
@@ -49,7 +51,11 @@
     {
         $users = readJson();
         if ($users == null) $data['id'] = 1;
-        else $data['id'] = $users[count($users) - 1]['id'] + 1;
+        else {
+            date_default_timezone_set("Asia/Dhaka");
+            $data['joined'] = date('d-m-Y, h:i a');
+            $data['id'] = $users[count($users) - 1]['id'] + 1;
+        }
         unset($data['cpassword']);
         $users[] = $data;
         writeJson($users);
@@ -69,14 +75,21 @@
     function login($email, $password)
     {
         $users = readJson();
+        $success = false;
         foreach ($users as $item) {
             if ($email === $item['email'] && $password === $item['password']) {
                 $_SESSION['username'] = $item['username'];
                 $_SESSION['email'] = $item['email'];
+                $_SESSION['password'] = $item['password'];
+                $_SESSION['phone'] = $item['phone'];
+                $_SESSION['gender'] = $item['gender'];
+                $_SESSION['joined'] = $item['joined'];
+                $_SESSION['id'] = $item['id'];
                 header("Location: home.php");
                 die();
-            } else echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
+            }
         }
+        if (!$success) echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
     }
 
     function recover($email)
@@ -92,4 +105,26 @@
                             </p>";
             } else echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
         }
+    }
+
+    function update($previousEmail, $username, $email, $password, $phone)
+    {
+        $users = readJson();
+        foreach ($users as &$item) {
+            if ($previousEmail === $item['email']) {
+                $item['username'] = $username;
+                $item['email'] = $email;
+                $item['password'] = $password;
+                $item['phone'] = $phone;
+                writeJson($users);
+                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+                $_SESSION['phone'] = $phone;
+
+                header("location: profile.php");
+                die();
+            }
+        }
+
     }

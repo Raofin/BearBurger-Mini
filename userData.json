@@ -1,17 +1,20 @@
-[{
-        "username": "Raofin",
-        "email": "hello@raofin.net",
-        "password": "asdfg",
-        "phone": "0123456789",
-        "gender": "Male",
-        "id": 1
-    },
-    {
-        "username": "Raofin",
-        "email": "a",
-        "password": "a",
-        "phone": "0123456789",
-        "gender": "Male",
-        "id": 2
-    }
+[
+  {
+    "username": "Raofin",
+    "email": "hello@raofin.net",
+    "password": "asdfgi",
+    "phone": "0123456789",
+    "gender": "Male",
+    "joined": "12-03-2022, 03:09 am",
+    "id": 1
+  },
+  {
+    "username": "asdf",
+    "email": "a",
+    "password": "a",
+    "phone": "0123456789",
+    "gender": "Male",
+    "joined": "12-03-2022, 03:09 am",
+    "id": 2
+  }
 ]

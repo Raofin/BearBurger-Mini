@@ -1,4 +1,9 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+    if (isset($_SESSION['username'])) {
+        header("location: home.php");
+        die();
+    }
+?>
     <center>
         <h1>Welcome to BearBurger!</h1><br>
         <h3>User Login</h3>

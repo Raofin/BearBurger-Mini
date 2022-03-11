@@ -1,4 +1,9 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+    if (isset($_SESSION['username'])) {
+        header("location: home.php");
+        die();
+    }
+?>
     <center>
         <h1>Create an Account</h1>
         <form style="max-width: 25rem" name="f" action="" method="POST" novalidate>
