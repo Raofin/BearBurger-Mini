@@ -1,9 +1,6 @@
-<?php
-    include '../includes/header.php';
-    include 'users.php'
-?>
+<?php include 'header.php'; ?>
     <center>
-        <h1>Create An Account</h1><br>
+        <h1>Create an Account</h1>
         <form style="max-width: 25rem" name="f" action="" method="POST" novalidate>
             <table>
                 <tr>
@@ -59,4 +56,4 @@
         </form>
     </center>
 
-<?php include '../includes/footer.php' ?>
+<?php include 'footer.php' ?>
