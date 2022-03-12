@@ -1,4 +1,10 @@
 <?php
     include 'header.php';
-    echo "login successful";
+
+    if (!isset($_SESSION['username'])) {
+        header("location: login.php");
+        die();
+    }
+
+    echo "Home Page";
     include 'footer.php';

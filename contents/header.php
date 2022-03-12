@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include 'users.php'
+    include 'users.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +18,12 @@
 <body>
 
 <div style="padding: 20px 20px 5px 20px">
-    <img src=../img/logo-3.svg alt="Logo">
+    <a href="home.php"><img src=../img/logo-3.svg alt="Logo"></a>
     <?php if (isset($_SESSION['username'])) {
-        echo "<h2 style=\"float: right; padding-right: 20px\"><a href='profile.php'>{$_SESSION['username']}</a>
-             <a href=\"logout.php\">Logout</a>
+        echo "<h2 style=\"float: right; padding-right: 20px\">
+                <a href='profile.php'>{$_SESSION['username']}</a>
+                <a href=\"logout.php\">Logout</a>
             </h2>";
     } ?>
 </div>
 <hr>
-

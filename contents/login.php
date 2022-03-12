@@ -7,21 +7,33 @@
     <center>
         <h1>Welcome to BearBurger!</h1><br>
         <h3>User Login</h3>
-        <form style="max-width: 25rem" method="post" novalidate>
+        <form style="max-width: 25rem" method="post">
             <table>
                 <tr>
                     <td align="right">Email</td>
-                    <td align="left"><input type="text" id="email" name="email"></td>
+                    <td align="left">
+                        <label for="email"></label>
+                        <input type="email" id="email" name="email"
+                               value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>"
+                               required>
+                    </td>
                 </tr>
                 <tr>
                     <td align="right">Password</td>
-                    <td align="left"><input type="password" id="password" name="password"></td>
+                    <td align="left">
+                        <label for="password"></label>
+                        <input type="password" id="password" name="password"
+                               value="<?php echo isset($_POST['password']) ? $_POST['password'] : '' ?>"
+                               required>
+                    </td>
                 </tr>
             </table>
             <input type="checkbox" id="remember" name="remember" value="remember">
             <label for="remember">Remember</label>
             <br><br>
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') login($_POST['email'], $_POST['password']) ?>
+            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                login();
+            } ?>
             <input type="submit" value="Login">
             <br><br><br>
             <div>

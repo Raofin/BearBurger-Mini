@@ -1,5 +1,4 @@
 <?php
-
     function register()
     {
         $user = [
@@ -44,22 +43,25 @@
         if (!$isValid) {
             $invalidMessage = "Invalid" . substr($errorMessage, 0, -1) . ".";
             echo "<p style=\"color:tomato;\">$invalidMessage</p>";
-        } else createUser($_POST);
+        } else createUser();
     }
 
-    function createUser($data)
+    function createUser()
     {
+        $data = $_POST;
         $users = readJson();
         if ($users == null) $data['id'] = 1;
         else {
             date_default_timezone_set("Asia/Dhaka");
-            $data['joined'] = date('d-m-Y, h:i a');
+            $data['joined'] = date('d-m-Y, h:i A');
             $data['id'] = $users[count($users) - 1]['id'] + 1;
         }
         unset($data['cpassword']);
         $users[] = $data;
         writeJson($users);
-        return $data;
+
+        $_SESSION['regSuccess'] = true;
+        header("location: register.php");
     }
 
     function readJson()
@@ -72,12 +74,11 @@
         file_put_contents('..\userData.json', json_encode($users, JSON_PRETTY_PRINT));
     }
 
-    function login($email, $password)
+    function login()
     {
         $users = readJson();
-        $success = false;
         foreach ($users as $item) {
-            if ($email === $item['email'] && $password === $item['password']) {
+            if ($_POST['email'] === $item['email'] && $_POST['password'] === $item['password']) {
                 $_SESSION['username'] = $item['username'];
                 $_SESSION['email'] = $item['email'];
                 $_SESSION['password'] = $item['password'];
@@ -89,42 +90,43 @@
                 die();
             }
         }
-        if (!$success) echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
+        echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
     }
 
-    function recover($email)
+    function recover()
     {
         $users = readJson();
         foreach ($users as $item) {
-            if ($email === $item['email']) {
-                echo "
-                <h3 style=\"color:forestgreen;\">Your account has been successfully recovered.</h3>
+            if ($_POST['email'] === $item['email']) {
+                echo "<h3 style=\"color:forestgreen;\">Your account has been successfully recovered.</h3>
                             <p style=\"font-size:130%;\">
                                 <b>Username: </b>{$item['username']}<br>
-                                <b>Password: </b>{$item['password']}
+                                <b>Password: </b>{$item['password']}<br>
+                                <b>Email: </b>{$item['email']}
                             </p>";
-            } else echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
+                return;
+            }
         }
+        echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
     }
 
-    function update($previousEmail, $username, $email, $password, $phone)
+    function update()
     {
         $users = readJson();
         foreach ($users as &$item) {
-            if ($previousEmail === $item['email']) {
-                $item['username'] = $username;
-                $item['email'] = $email;
-                $item['password'] = $password;
-                $item['phone'] = $phone;
+            if ($_SESSION['email'] === $item['email']) {
+                $item['username'] = $_POST['username'];
+                $item['email'] = $_POST['email'];
+                $item['password'] = $_POST['password'];
+                $item['phone'] = $_POST['phone'];
                 writeJson($users);
-                $_SESSION['username'] = $username;
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['phone'] = $phone;
+                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['password'] = $_POST['password'];
+                $_SESSION['phone'] = $_POST['phone'];
 
                 header("location: profile.php");
                 die();
             }
         }
-
     }
