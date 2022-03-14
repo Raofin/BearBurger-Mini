@@ -29,9 +29,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="checkbox" id="remember" name="remember" value="remember">
-            <label for="remember">Remember</label>
-            <br><br>
+            <br>
             <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 login();
             } ?>

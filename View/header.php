@@ -22,7 +22,7 @@
     <?php if (isset($_SESSION['username'])) {
         echo "<h2 style=\"float: right; padding-right: 20px\">
                 <a href='profile.php'>{$_SESSION['username']}</a>
-                <a href=\"../Controller/logout.php\">Logout</a>
+                <a href=\"../Controller/logout.php\">Sign out</a>
             </h2>";
     } ?>
 </div>
