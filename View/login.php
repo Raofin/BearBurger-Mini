@@ -1,4 +1,5 @@
-<?php include 'header.php';
+<?php
+    require 'header.php';
     if (isset($_SESSION['username'])) {
         header("location: home.php");
         die();
@@ -7,7 +8,7 @@
     <center>
         <h1>Welcome to BearBurger!</h1><br>
         <h3>User Login</h3>
-        <form style="max-width: 25rem" method="post">
+        <form style="max-width: 25rem" method="post" novalidate>
             <table>
                 <tr>
                     <td align="right">Email</td>

@@ -1,5 +1,5 @@
 <?php
-    header("Location: login.php");
     session_start();
     session_destroy();
+    header("Location: ../View/login.php");
     die();

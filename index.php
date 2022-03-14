@@ -2,9 +2,9 @@
     session_start();
 
     if (isset($_SESSION['username'])) {
-        header("Location: contents/home.php");
+        header("Location: view/home.php");
         die();
     }
 
-    header("Location: contents/login.php");
+    header("Location: view/login.php");
     die();

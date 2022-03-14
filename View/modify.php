@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php require 'header.php'; ?>
     <center>
         <h1>Modify User Details</h1>
         <form style="max-width: 25rem" method="post" novalidate>

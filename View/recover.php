@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php require 'header.php'; ?>
     <center>
         <h1>Account Recovery</h1><br>
         <h3>Recover your BearBurger account</h3>

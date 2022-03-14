@@ -1,5 +1,5 @@
 <?php
-    include 'header.php';
+    require 'header.php';
 
     if (!isset($_SESSION['username'])) {
         header("location: login.php");

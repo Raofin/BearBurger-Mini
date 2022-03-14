@@ -1,0 +1,47 @@
+[
+    {
+        "username": "Raofin",
+        "email": "hello@raofin.net",
+        "password": "qwert",
+        "phone": "0123456789",
+        "gender": "Male",
+        "joined": "12-03-2022, 03:09 AM",
+        "id": 1
+    },
+    {
+        "username": "asedf",
+        "email": "raofin@hotmail.com",
+        "password": "Raofinasdf",
+        "phone": "13212312",
+        "gender": "Male",
+        "joined": "14-03-2022, 08:46 PM",
+        "id": 2
+    },
+    {
+        "username": "asdfasefd",
+        "email": "hello@raofin.net",
+        "password": "asdfasefd",
+        "phone": "4243234",
+        "gender": "Male",
+        "joined": "15-03-2022, 12:02 AM",
+        "id": 3
+    },
+    {
+        "username": "dfgdfg",
+        "email": "sdfgz@asdfasdf.aasd",
+        "password": "dfgdfg",
+        "phone": "123123",
+        "gender": "Female",
+        "joined": "15-03-2022, 12:03 AM",
+        "id": 4
+    },
+    {
+        "username": "fasdf",
+        "email": "hello@raofin.net",
+        "password": "fasdf",
+        "phone": "13213123",
+        "gender": "Male",
+        "joined": "15-03-2022, 12:21 AM",
+        "id": 5
+    }
+]

@@ -1,4 +1,6 @@
-<?php include 'header.php';
+<?php
+    require 'header.php';
+    require '../Controller/registration.php';
     if (isset($_SESSION['username'])) {
         header("location: home.php");
         die();
