@@ -49,7 +49,7 @@
     function createUser()
     {
         $data = $_POST;
-        $users = readJson();
+        $users = readJson('users.json');
         if ($users == null) $data['id'] = 1;
         else {
             date_default_timezone_set("Asia/Dhaka");
@@ -58,7 +58,7 @@
         }
         unset($data['cpassword']);
         $users[] = $data;
-        writeJson($users);
+        writeJson($users, 'users.json');
 
         $_SESSION['regSuccess'] = true;
         header("location: register.php");

@@ -3,7 +3,7 @@
 
     function login()
     {
-        $users = readJson();
+        $users = readJson('users.json');
         foreach ($users as $item) {
             if ($_POST['email'] === $item['email'] && $_POST['password'] === $item['password']) {
                 $_SESSION['username'] = $item['username'];
@@ -22,7 +22,7 @@
 
     function recover()
     {
-        $users = readJson();
+        $users = readJson('users.json');
         foreach ($users as $item) {
             if ($_POST['email'] === $item['email']) {
                 echo "<h3 style=\"color:forestgreen;\">Your account has been successfully recovered.</h3>
@@ -39,14 +39,14 @@
 
     function update()
     {
-        $users = readJson();
+        $users = readJson('users.json');
         foreach ($users as &$item) {
             if ($_SESSION['email'] === $item['email']) {
                 $item['username'] = $_POST['username'];
                 $item['email'] = $_POST['email'];
                 $item['password'] = $_POST['password'];
                 $item['phone'] = $_POST['phone'];
-                writeJson($users);
+                writeJson($users, 'users.json');
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['password'] = $_POST['password'];
