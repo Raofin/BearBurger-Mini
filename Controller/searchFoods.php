@@ -17,6 +17,8 @@
                 </div>';
             }
         }
-        if (!$found) echo '<h3 style="color:tomato;">Sorry ' . $_SESSION['username'] . '! ' . $_POST['search'] . ' is not available.</h3>';
+        if (!$found)
+            echo '<h3 style="color:tomato;">Sorry ' . $_SESSION['username'] . '! ' . $_POST['search'] . ' is not available.</h3>';
+
         echo '</center>';
     }

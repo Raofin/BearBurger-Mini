@@ -33,16 +33,16 @@
         $users = readJson('users.json');
         foreach ($users as $item) {
             if ($_POST['email'] === $item['email']) {
-                echo "<h3 style=\"color:forestgreen;\">Your account has been successfully recovered.</h3>
+                echo '<h3 style="color:forestgreen;">Your account has been successfully recovered.</h3>
                             <p style=\"font-size:130%;\">
-                                <b>Username: </b>{$item['username']}<br>
-                                <b>Password: </b>{$item['password']}<br>
-                                <b>Email: </b>{$item['email']}
-                            </p>";
+                                <b>Username: </b>' . $item['username'] . '<br>
+                                <b>Password: </b>' . $item['password'] . '<br>
+                                <b>Email: </b>' . $item['email'] . '
+                            </p>';
                 return;
             }
         }
-        echo "<p style=\"color:tomato;\">Invalid email or password. Please try again.</p>";
+        echo '<p style="color:tomato;">Invalid email or password. Please try again.</p>';
     }
 
     function update()

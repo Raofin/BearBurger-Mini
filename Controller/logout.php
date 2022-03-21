@@ -1,4 +1,5 @@
 <?php
+
     if (isset($_COOKIE['RememberedMail'])) {
         unset($_COOKIE['RememberedMail']);
         setcookie('RememberedMail', null, -1, '/');
