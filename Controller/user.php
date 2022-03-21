@@ -1,18 +1,26 @@
 <?php
     require '../Controller/jsonReadWrite.php';
 
+    function loadProfile($item)
+    {
+        $_SESSION['username'] = $item['username'];
+        $_SESSION['email'] = $item['email'];
+        $_SESSION['password'] = $item['password'];
+        $_SESSION['phone'] = $item['phone'];
+        $_SESSION['gender'] = $item['gender'];
+        $_SESSION['joined'] = $item['joined'];
+        $_SESSION['id'] = $item['id'];
+    }
+
     function login()
     {
         $users = readJson('users.json');
         foreach ($users as $item) {
             if ($_POST['email'] === $item['email'] && $_POST['password'] === $item['password']) {
-                $_SESSION['username'] = $item['username'];
-                $_SESSION['email'] = $item['email'];
-                $_SESSION['password'] = $item['password'];
-                $_SESSION['phone'] = $item['phone'];
-                $_SESSION['gender'] = $item['gender'];
-                $_SESSION['joined'] = $item['joined'];
-                $_SESSION['id'] = $item['id'];
+                loadProfile($item);
+                if (isset($_POST['remember']))
+                    setcookie("RememberedMail", $_POST['email'], time() + (86400 * 30), "/");
+
                 header("Location: ../View/home.php");
                 die();
             }
@@ -39,6 +47,13 @@
 
     function update()
     {
+        foreach ($_POST as $item) {
+            if ($item === '') {
+                echo '<h3 style="color:tomato;">Please fill out all the fields properly.</h3>';
+                return;
+            }
+        }
+
         $users = readJson('users.json');
         foreach ($users as &$item) {
             if ($_SESSION['email'] === $item['email']) {
@@ -55,5 +70,26 @@
                 header("location: ../View/profile.php");
                 die();
             }
+        }
+    }
+
+    function verifyCookie()
+    {
+        if (isset($_COOKIE["RememberedMail"]) && !isset($_SESSION['username'])) {
+            $users = readJson('users.json');
+            foreach ($users as $item) {
+                if ($_COOKIE["RememberedMail"] === $item['email']) {
+                    loadProfile($item);
+                    break;
+                }
+            }
+        }
+    }
+
+    function verifyLoggedIn()
+    {
+        if (!isset($_SESSION['username']) && !isset($_COOKIE["RememberedMail"])) {
+            header("location: login.php");
+            die();
         }
     }

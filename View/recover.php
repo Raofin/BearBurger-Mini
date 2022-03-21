@@ -1,4 +1,10 @@
-<?php require 'header.php'; ?>
+<?php
+    require 'header.php';
+    if (isset($_SESSION['username'])) {
+        header("location: home.php");
+        die();
+    }
+?>
     <center>
         <h1>Account Recovery</h1><br>
         <h3>Recover your BearBurger account</h3>

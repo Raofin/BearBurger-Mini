@@ -29,10 +29,10 @@
                     </td>
                 </tr>
             </table>
-            <br>
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                login();
-            } ?>
+            <input type="checkbox" id="remember" name="remember" value="remember">
+            <label for="remember">Remember</label>
+            <br><br>
+            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') login(); ?>
             <input type="submit" value="Login">
             <br><br><br>
             <div>

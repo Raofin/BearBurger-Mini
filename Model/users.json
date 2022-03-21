@@ -1,11 +1,11 @@
 [
-  {
-    "username": "Raofin",
-    "email": "hello@raofin.net",
-    "password": "qwert",
-    "phone": "0123456789",
-    "gender": "Male",
-    "joined": "12-03-2022, 03:09 AM",
-    "id": 1
-  }
+    {
+        "username": "Raofin",
+        "email": "hello@raofin.net",
+        "password": "qwert",
+        "phone": "0123456789",
+        "gender": "Male",
+        "joined": "12-03-2022, 03:09 AM",
+        "id": 1
+    }
 ]

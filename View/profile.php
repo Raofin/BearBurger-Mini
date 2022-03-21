@@ -1,4 +1,8 @@
-<?php require 'header.php'; ?>
+<?php
+    require 'header.php';
+    verifyLoggedIn();
+?>
+
     <center>
         <h1>User Profile</h1>
         <form style="max-width: 25rem" method="post" novalidate>

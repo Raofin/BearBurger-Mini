@@ -1,6 +1,7 @@
 <?php
     session_start();
     require '../Controller/user.php';
+    verifyCookie();
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +18,27 @@
 
 <body>
 
-<div style="padding: 20px 20px 5px 20px">
-    <a href="home.php"><img src=../img/logo-3.svg alt="Logo"></a>
-    <?php if (isset($_SESSION['username'])) {
-        echo "<h2 style=\"float: right; padding-right: 20px\">
-                <a href='profile.php'>{$_SESSION['username']}</a>
-                <a href=\"../Controller/logout.php\">Sign out</a>
-            </h2>";
-    } ?>
-</div>
+<table style="border-collapse: collapse; width: 100%; ">
+    <tbody>
+    <tr>
+        <td><p><a href="home.php"><img src=../img/logo-3.svg alt="Logo"></a></p></td>
+        <?php
+            if (isset($_SESSION['username'])) {
+                echo '
+            <h2 style="position:absolute; text-align:center; left:0; right:0; top:30px;">
+                <a href="search.php">Search&nbsp;Foods</a>
+                <a href="profile.php">View&nbsp;Profile</a>
+            </h2>
+            <td style="padding-right: 20px;">
+                <h2>
+                    <p style="text-align: right;">' . $_SESSION['username'] . '<br>
+                        <a href="../Controller/logout.php">Sign&nbsp;out</a></p>
+                </h2>
+            </td>';
+            }
+        ?>
+    </tr>
+    </tbody>
+</table>
+
 <hr>

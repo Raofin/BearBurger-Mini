@@ -14,7 +14,6 @@
 
         $isValid = true;
         $errorMessage = "";
-
         $user = array_merge($user, $_POST);
 
         if (!$user['username'] || strlen($user['username']) < 4 || strlen($user['username']) > 20) {
