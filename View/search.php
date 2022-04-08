@@ -1,7 +1,7 @@
 <?php
     require 'header.php';
     require '../Controller/searchFoods.php';
-    verifyLoggedIn();
+    verifyNotLoggedIn();
 ?>
 
 <center>

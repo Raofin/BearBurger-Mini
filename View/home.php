@@ -2,7 +2,7 @@
     require 'header.php';
     require '../Controller/loadFoods.php';
 
-    verifyLoggedIn();
+    verifyNotLoggedIn();
     loadFoods();
 
     require 'footer.php';

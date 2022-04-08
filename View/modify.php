@@ -1,6 +1,6 @@
 <?php
     require 'header.php';
-    verifyLoggedIn();
+    verifyNotLoggedIn();
 ?>
     <center>
         <h1>Modify User Details</h1>

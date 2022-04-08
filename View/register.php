@@ -1,10 +1,7 @@
 <?php
     require 'header.php';
     require '../Controller/registration.php';
-    if (isset($_SESSION['username'])) {
-        header("location: home.php");
-        die();
-    }
+    verifyLoggedIn();
 ?>
     <center>
         <h1>Create an Account</h1>

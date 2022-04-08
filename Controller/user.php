@@ -88,7 +88,15 @@
 
     function verifyLoggedIn()
     {
-        if (!isset($_SESSION['username']) && !isset($_COOKIE["RememberedMail"])) {
+        if (isset($_SESSION['username'])) {
+            header("location: home.php");
+            die();
+        }
+    }
+
+    function verifyNotLoggedIn()
+    {
+        if (!isset($_SESSION['username'])) {
             header("location: login.php");
             die();
         }

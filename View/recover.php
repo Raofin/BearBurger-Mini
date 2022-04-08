@@ -1,9 +1,6 @@
 <?php
     require 'header.php';
-    if (isset($_SESSION['username'])) {
-        header("location: home.php");
-        die();
-    }
+    verifyLoggedIn();
 ?>
     <center>
         <h1>Account Recovery</h1><br>

@@ -21,11 +21,13 @@
 <table style="border-collapse: collapse; width: 100%; ">
     <tbody>
     <tr>
-        <td><p><a href="home.php"><img src=../img/logo.svg alt="Logo"></a></p></td>
+        <td><p style="padding-left: 20px">
+                <a href=" home.php"><img src=../img/logo.svg alt="Logo"></a>
+            </p></td>
         <?php
             if (isset($_SESSION['username'])) {
                 echo '
-            <h2 style="position:absolute; text-align:center; left:0; right:0; top:30px;">
+            <h2 style="position:absolute; text-align:center; left:400px; right:400px; top:30px;">
                 <a href="home.php">Home</a>
                 <a href="search.php">Search&nbsp;Foods</a>
                 <a href="profile.php">View&nbsp;Profile</a>
