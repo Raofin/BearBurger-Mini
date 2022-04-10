@@ -1,4 +1,5 @@
 <?php
+
     function search()
     {
         $foods = readJson('foods.json');

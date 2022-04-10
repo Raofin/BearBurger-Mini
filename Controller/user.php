@@ -1,5 +1,5 @@
 <?php
-    require '../Controller/jsonReadWrite.php';
+    require '../Model/jsonReadWrite.php';
 
     function loadProfile($item)
     {
